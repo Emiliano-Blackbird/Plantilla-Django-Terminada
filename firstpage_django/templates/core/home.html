@@ -1,0 +1,23 @@
+{% extends "layout-base.html" %}
+
+{% block head_title %}Página de inicio{% endblock %}
+
+{% block page_content %}
+    <h1>Introducción a Django: El Framework Backend Potente y Escalable</h1>
+    <p>
+        Django es un framework de desarrollo web en Python que permite construir aplicaciones seguras, escalables y de alto rendimiento. Su filosofía "batteries included" proporciona herramientas integradas para autenticación, bases de datos, formularios y más, reduciendo el tiempo de desarrollo.
+    </p>
+    <p>
+        {% verbatim %}
+Uno de los aspectos más importantes de Django es su sistema de plantillas, que facilita la creación de páginas dinámicas con lógica sencilla. Gracias a características como {% include %} y {% extends %}, los desarrolladores pueden reutilizar código y mantener sus proyectos organizados.
+{% endverbatim %}
+    </p>
+
+    <h2>Si buscas rapidez, seguridad y escalabilidad, Django es una de las mejores opciones para crear aplicaciones web modernas.</h2>
+    <p>
+        Django también prioriza la seguridad, protegiendo automáticamente contra ataques como CSRF, XSS y SQL Injection. Con su ORM (Object-Relational Mapper), permite trabajar con bases de datos sin necesidad de escribir SQL puro, lo que agiliza el desarrollo y evita errores comunes.
+    </p>
+    <p>
+        <a href="{% url 'core:about_us' %}">Conoce más sobre DJANGO</a>
+    </p>
+{% endblock %}
