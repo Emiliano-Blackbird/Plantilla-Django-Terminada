@@ -3,5 +3,16 @@
 {% block head_title %}Cursos{% endblock %}
 
 {% block page_content %}
-    <h1>Cursos</h1>
+  <h1>Django autodidacta</h1>
+
+  {% for course in courses %}
+    <article id="{{ course.pk }}">
+      <h2>{{ course.title }}</h2>
+      <p>Fecha de creación: {{ course.Created_At|date:"d/m/Y H:i" }}</p>
+      <div>
+        {{ course.content|truncatechars:100 }}...  <!-- corta el texto a 100 caracteres -->
+      </div>
+      <p><a href="{% url 'courses:course_detail' course.pk %}">Ver más</a></p>
+    </article>
+  {% endfor %}
 {% endblock %}

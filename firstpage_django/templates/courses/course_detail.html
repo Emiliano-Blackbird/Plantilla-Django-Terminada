@@ -1,7 +1,22 @@
 {% extends "layout-base.html" %}
 
-{% block head_title %}Detalles del curso{% endblock %}
+{% block head_title %}Top recursos autodidacta {{ course.title}}{% endblock %}
 
 {% block page_content %}
-    <h1>Detalles del curso</h1>
+
+  <article id="{{ course.pk }}">
+    <h1>Título del curso {{ course.title }}</h1>
+    <p>Fecha de publicación: {{ course.Created_At|date:"d/m/Y H:i" }}</p>
+    <div>
+      {{ course.content }}
+    </div>
+    {% if course.toc %}
+      <p><a href="{{ course.toc.url}}">Logo Django</a></p>  <!--Si agrego el atributo download aparece para descarga directa ejemplo "{{ course.toc.url}}" download-->
+    {% endif %}
+    <a href="{{ course.Enlace_Oficial }}" target="_blank" rel="noopener noreferrer">
+      Ir al sitio oficial de Django
+    </a>
+    <p><a href="{% url 'courses:course_list' %}">Volver</a></p>
+  </article>
+
 {% endblock %}

@@ -20,6 +20,17 @@ class Course(models.Model):
         default=timezone.now,
     )
 
+    show_home = models.BooleanField(
+        'Mostrar en la home',
+        default=False,
+    )
+    toc = models.FileField(
+        verbose_name="Temario",
+        upload_to="courses/toc/",  # directorio donde se guardará el archivo subido por el usuario
+        null=True,
+        blank=True,
+    )
+
     def __str__(self):
         return self.title
 # python manage.py makemigrations en la terminal y python manage.py migrate

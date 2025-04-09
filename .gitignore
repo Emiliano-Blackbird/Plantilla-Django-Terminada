@@ -2,6 +2,9 @@
 entornovirtual/
 .env
 
-# Archivos innecesarios
+# Archivos innecesarios importante que no se suba sqlite3
 __pycache__/
 *.pyc
+db.sqlite3
+media/
+__pycache__/

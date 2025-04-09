@@ -19,9 +19,13 @@ from django.urls import path, include  # Importo include para incluir las urls d
 from debug_toolbar.toolbar import debug_toolbar_urls  # Debug toolbar
 
 
+from django.conf import settings
+from django.conf.urls.static import static  # Para poder servir los archivos estáticos en desarrollo
+
+
 urlpatterns = [
     path("", include("core.urls", namespace="core")),  # Incluyo las urls de app
     path("blog/", include("blog.urls", namespace="blog")),
     path("cursos/", include("courses.urls", namespace="courses")),
     path('admin/', admin.site.urls),
-] + debug_toolbar_urls()  # Agrego las urls de debug toolbar
+] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Debug toolbar + static guardado

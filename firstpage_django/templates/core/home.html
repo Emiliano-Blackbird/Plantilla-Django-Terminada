@@ -20,4 +20,16 @@ Uno de los aspectos más importantes de Django es su sistema de plantillas, que 
     <p>
         <a href="{% url 'core:about_us' %}">Conoce más sobre DJANGO</a>
     </p>
+
+    <h2>Últimas actualizaciones</h2>
+    {% for course in courses %}
+    <article id="{{ course.pk }}">
+      <h2>{{ course.title }}</h2>
+      <p>Fecha de creación: {{ course.created_at }}</p>
+      <div>
+        {{ course.content|truncatechars:100 }}...  <!-- corta el texto a 100 caracteres -->
+      </div>
+      <p><a href="{% url 'courses:course_detail' course.pk %}">Ver más</a></p>
+    </article>
+  {% endfor %}
 {% endblock %}
