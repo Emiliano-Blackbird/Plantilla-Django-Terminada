@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django_extensions",  # Para poder usar el comando runserver_plus
+
+    "django_extensions",
+    "thumbnails",  # Para las miniaturas de las imágenes
+    "debug_toolbar",  # Debug toolbar
+
     'blog',  # Al final agrego las apps que yo he creado
     "core",
     "courses",
-    "debug_toolbar",  # Debug toolbar
 ]
 
 MIDDLEWARE = [

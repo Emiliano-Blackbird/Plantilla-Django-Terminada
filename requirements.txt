@@ -1,0 +1,6 @@
+Django==5.2
+django-debug-toolbar==5.1.0
+django-extensions==3.2.3
+pillow==11.1.0
+django-thumbnails==0.8.0
+# Apps instaladas en la plantilla

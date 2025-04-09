@@ -30,6 +30,12 @@ class Course(models.Model):
         null=True,
         blank=True,
     )
+    course_image = models.ImageField(
+        verbose_name="Portada del curso",
+        upload_to="courses/images/",  # directorio donde se guardará el archivo subido por el usuario
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.title

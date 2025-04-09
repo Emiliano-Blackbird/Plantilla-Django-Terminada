@@ -5,6 +5,11 @@
 {% block page_content %}
 
   <article id="{{ course.pk }}">
+    {% if course.course_image %}  <!--portada-->
+      <picture>
+        <img width="250px" src="{{ course.course_image.url }}" alt="">
+      </picture>
+    {% endif %}
     <h1>Título del curso {{ course.title }}</h1>
     <p>Fecha de publicación: {{ course.Created_At|date:"d/m/Y H:i" }}</p>
     <div>
