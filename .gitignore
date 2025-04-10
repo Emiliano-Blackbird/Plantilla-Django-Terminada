@@ -2,9 +2,20 @@
 entornovirtual/
 .env
 
-# Archivos innecesarios importante que no se suba sqlite3
+# Archivos innecesarios e importantes que no se deben subir
 __pycache__/
 *.pyc
+
+# Base de datos SQLite (si usas otra, ignora solo los archivos correspondientes)
 db.sqlite3
+
+# Archivos de medios (subidos por usuarios, por ejemplo)
 media/
-__pycache__/
+
+# Archivos estáticos generados automáticamente
+static/
+staticfiles/
+
+# Ignorar migraciones generadas si deseas evitar conflictos
+**/migrations/*.pyc
+**/migrations/__pycache__/

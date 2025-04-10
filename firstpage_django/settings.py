@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "thumbnails",  # Para las miniaturas de las imágenes
     "debug_toolbar",  # Debug toolbar
+    "ckeditor",  # Para el editor de texto enriquecido
 
     'blog',  # Al final agrego las apps que yo he creado
     "core",
@@ -131,6 +132,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"  # directorio donde se guardarán los archivos estáticos recogidos por collectstatic
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -144,3 +146,40 @@ INTERNAL_IPS = [
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Donde se guardan los archivos subidos por el usuario
+
+THUMBNAILS = {
+    'METADATA': {
+        'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
+    },
+    'STORAGE': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        # You can also use Amazon S3 or any other Django storage backends
+    },
+    'SIZES': {
+        'small': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 200, 'height': 300},
+                {'PATH': 'thumbnails.processors.crop', 'width': 200, 'height': 250},
+            ],
+        },
+        'large': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 400, 'height': 600},
+                {'PATH': 'thumbnails.processors.crop', 'width': 400, 'height': 600},
+            ],
+        },
+    }
+}  # Configuración de thumbnails copiado de project/django-thumbnails
+
+CKEDITOR_BASEPATH = "static/ckeditor/ckeditor/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}

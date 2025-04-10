@@ -7,13 +7,13 @@
   <article id="{{ course.pk }}">
     {% if course.course_image %}  <!--portada-->
       <picture>
-        <img width="250px" src="{{ course.course_image.url }}" alt="">
+        <img src="{{ course.course_image.thumbnails.large.url }}" alt="">
       </picture>
     {% endif %}
     <h1>Título del curso {{ course.title }}</h1>
     <p>Fecha de publicación: {{ course.Created_At|date:"d/m/Y H:i" }}</p>
     <div>
-      {{ course.content }}
+      {{ course.content|safe }}
     </div>
     {% if course.toc %}
       <p><a href="{{ course.toc.url}}">Logo Django</a></p>  <!--Si agrego el atributo download aparece para descarga directa ejemplo "{{ course.toc.url}}" download-->

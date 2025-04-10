@@ -1,6 +1,8 @@
 # Create your models here.
 from django.db import models
 from django.utils import timezone
+from thumbnails.fields import ImageField
+from ckeditor.fields import RichTextField  # asegurate de tener instalado django-ckeditor
 
 
 # Create your models here.
@@ -9,7 +11,7 @@ class Course(models.Model):
         verbose_name="Título del curso",
         max_length=200,
     )
-    content = models.TextField(
+    content = RichTextField(
         verbose_name="Contenido del curso",
         )
     Enlace_Oficial = models.URLField(
@@ -30,7 +32,7 @@ class Course(models.Model):
         null=True,
         blank=True,
     )
-    course_image = models.ImageField(
+    course_image = ImageField(
         verbose_name="Portada del curso",
         upload_to="courses/images/",  # directorio donde se guardará el archivo subido por el usuario
         null=True,
