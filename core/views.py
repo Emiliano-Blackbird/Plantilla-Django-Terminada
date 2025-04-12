@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from courses.models import Course
 from blog.models import Post
+from .forms import ContactForms
 
 
 # Vistas generales de la app
@@ -28,4 +29,27 @@ def register(request):
 
 
 def contact(request):
-    return render(request, 'core/contact.html')
+    if request.POST:
+        formulario = ContactForms(request.POST)
+
+        if formulario.is_valid():
+            nombre = formulario.cleaned_data['nombre']
+            email = formulario.cleaned_data['email']
+            comentario = formulario.cleaned_data['comentario']
+            print(f"Se ha enviado un correo a {nombre} procedente de email {email} con el texto {comentario}")
+            context = {
+                "form": formulario,
+                "success": True
+            }
+            return render(request, "core/contact.html", context)
+        else:
+            context = {
+                "form": formulario,
+            }
+            return render(request, "core/contact.html", context)
+
+    formulario = ContactForms()
+    context = {
+        "form": formulario,
+    }
+    return render(request, "core/contact.html", context)
