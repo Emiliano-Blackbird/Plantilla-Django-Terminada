@@ -4,6 +4,8 @@ from django.shortcuts import render
 from courses.models import Course
 from blog.models import Post
 from .forms import ContactForms
+from django.core.mail import send_mail
+from .models import Contact  # En caso de fallo del mail
 
 
 # Vistas generales de la app
@@ -36,10 +38,27 @@ def contact(request):
             nombre = formulario.cleaned_data['nombre']
             email = formulario.cleaned_data['email']
             comentario = formulario.cleaned_data['comentario']
-            print(f"Se ha enviado un correo a {nombre} procedente de email {email} con el texto {comentario}")
+
+# Configurar en settings.py el email de host para utilizar estas funciones
+            message_content = f"{nombre} con email {email} ha enviado el siguiente mensaje: {comentario}"
+
+            Contact.objects.create(
+                nombre=nombre,
+                email=email,
+                comentario=comentario
+            )
+
+            success = send_mail(
+                "Formulario de contacto de mi Web",
+                message_content,
+                "email del host que utilicé en settings.py",
+                ["email de usuario que utilicé en settings.py"],
+                fail_silently=False,
+            )
+
             context = {
                 "form": formulario,
-                "success": True
+                "success": success,
             }
             return render(request, "core/contact.html", context)
         else:

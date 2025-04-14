@@ -183,3 +183,10 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+# Configuración de email con host externo
+
+# EMAIL_HOST = "smtp + dominio"
+# EMAIL_HOST_USER = "usuario"
+# EMAIL_HOST_PASSWORD = "contraseña"
+# EMAIL_USE_TLS = True
