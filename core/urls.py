@@ -2,7 +2,7 @@
 
 from django.urls import path
 
-from .views import home, about_us, login_view, register, contact
+from .views import home, about_us, login_view, register, contact, logout_view
 
 app_name = 'core'  # Nombre del namespace de la app blog
 
@@ -11,5 +11,6 @@ urlpatterns = [
     path("sobre-nosotros/", about_us, name="about_us"),
     path("registro/", register, name="register"),
     path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
     path("contacta-con-nosotros/", contact, name="contact"),
 ]

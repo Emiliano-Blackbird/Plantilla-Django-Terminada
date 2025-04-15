@@ -1,5 +1,6 @@
 # Create your views here.
 from django.shortcuts import render
+from django.urls import reverse
 
 from courses.models import Course
 from blog.models import Post
@@ -8,6 +9,7 @@ from django.core.mail import send_mail
 from .models import Contact  # En caso de fallo del mail
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 
 # Vistas generales de la app
@@ -33,7 +35,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("/")
+                return redirect(reverse("core:home"))
             else:
                 context = {
                     'form': form,
@@ -57,6 +59,11 @@ def login_view(request):
 
 def register(request):
     return render(request, 'core/register.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(reverse("core:home"))
 
 
 def contact(request):

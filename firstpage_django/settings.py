@@ -190,3 +190,7 @@ CKEDITOR_CONFIGS = {
 # EMAIL_HOST_USER = "usuario"
 # EMAIL_HOST_PASSWORD = "contraseña"
 # EMAIL_USE_TLS = True
+
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"  # URL a la que redirigir después de iniciar sesión
+LOGOUT_REDIRECT_URL = "/"  # URL a la que redirigir después de cerrar sesión
