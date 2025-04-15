@@ -4,12 +4,13 @@ from django.urls import reverse
 
 from courses.models import Course
 from blog.models import Post
-from .forms import ContactForms, LoginForm
+from .forms import ContactForms, LoginForm, UserRegisterForm
 from django.core.mail import send_mail
 from .models import Contact  # En caso de fallo del mail
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 
 
 # Vistas generales de la app
@@ -58,6 +59,40 @@ def login_view(request):
 
 
 def register(request):
+    if request.POST:
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            password1 = form.cleaned_data['password1']
+            password2 = form.cleaned_data['password2']
+
+            user = User.objects.create_user(username, email, password1)
+            if User:
+                user.first_name = first_name
+                user.last_name = last_name
+                user.save()
+
+            context = {
+                'msj': 'Usuario creado correctamente',
+            }
+
+            return render(request, 'core/register.html', context)
+        else:
+            context = {
+                'form': form,
+                'error': True,
+            }
+            return render(request, 'core/register.html', context)
+    else:
+        form = UserRegisterForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'core/login.html', context)
+
     return render(request, 'core/register.html')
 
 
