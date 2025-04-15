@@ -3,9 +3,11 @@ from django.shortcuts import render
 
 from courses.models import Course
 from blog.models import Post
-from .forms import ContactForms
+from .forms import ContactForms, LoginForm
 from django.core.mail import send_mail
 from .models import Contact  # En caso de fallo del mail
+from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
 
 
 # Vistas generales de la app
@@ -22,8 +24,35 @@ def about_us(request):
     return render(request, 'core/about_us.html')
 
 
-def login(request):
-    return render(request, 'core/login.html')
+def login_view(request):
+    if request.POST:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("/")
+            else:
+                context = {
+                    'form': form,
+                    'error': True,
+                    'error_message': 'Usuario no valido',
+                }
+                return render(request, 'core/login.html', context)
+        else:
+            context = {
+                'form': form,
+                'error': True,
+            }
+        return render(request, 'core/login.html', context)
+    else:
+        form = LoginForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'core/login.html', context)
 
 
 def register(request):
