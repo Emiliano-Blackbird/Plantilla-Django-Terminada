@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.views.generic.base import TemplateView
 
 
 # Vistas generales de la app
@@ -21,6 +22,20 @@ def home(request):
         'posts': Post.objects.filter(show_home=True),
     }
     return render(request, 'core/home.html', context)
+
+
+class HomeView(TemplateView):  # Vista basada en clase (CCBV)
+    template_name = 'core/home.html'
+
+    def get_context_data(self, **kwargs):  # Función más escalable y modular
+        context = super().get_context_data(**kwargs)
+        context['courses'] = Course.objects.filter(show_home=True)
+        context['posts'] = Post.objects.filter(show_home=True)
+        return context
+
+
+class HomeView2(HomeView):  # Template view (CCBV) hereda todo en home2
+    template_name = 'core/home2.html'
 
 
 def about_us(request):
