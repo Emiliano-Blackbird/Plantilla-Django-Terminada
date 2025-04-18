@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib import messages  # Mensajes de información
 
 from courses.models import Course
 from blog.models import Post
@@ -8,7 +9,7 @@ from .forms import ContactForms, LoginForm, UserRegisterForm
 from django.core.mail import send_mail
 from .models import Contact  # En caso de fallo del mail
 from django.contrib.auth import authenticate, login
-from django.shortcuts import redirect
+from django.shortcuts import redirect  # Redireccionar a otra vista
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.views.generic.base import TemplateView
@@ -16,7 +17,6 @@ from django.views.generic.base import TemplateView
 
 # Vistas generales de la app
 def home(request):
-
     context = {
         'courses': Course.objects.filter(show_home=True),
         'posts': Post.objects.filter(show_home=True),
@@ -31,6 +31,8 @@ class HomeView(TemplateView):  # Vista basada en clase (CCBV)
         context = super().get_context_data(**kwargs)
         context['courses'] = Course.objects.filter(show_home=True)
         context['posts'] = Post.objects.filter(show_home=True)
+
+        messages.info(self.request, "Mensaje de información")  # Mensaje info
         return context
 
 
@@ -51,6 +53,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, f'Has iniciado sesión correctamente, {user.username}!')
                 return redirect(reverse("core:home"))
             else:
                 context = {
@@ -74,7 +77,7 @@ def login_view(request):
 
 
 def register(request):
-    if request.POST:
+    if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -84,35 +87,35 @@ def register(request):
             password1 = form.cleaned_data['password1']
             password2 = form.cleaned_data['password2']
 
+            # Creamos el usuario
             user = User.objects.create_user(username, email, password1)
-            if User:
-                user.first_name = first_name
-                user.last_name = last_name
-                user.save()
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
 
-            context = {
-                'msj': 'Usuario creado correctamente',
-            }
+            # Mensaje de éxito
+            messages.success(request, '¡Usuario creado correctamente! Ya puedes iniciar sesión.')
 
-            return render(request, 'core/register.html', context)
+            return redirect('core:login')  # Redirigimos a la página de login
+
         else:
             context = {
                 'form': form,
                 'error': True,
             }
             return render(request, 'core/register.html', context)
+
     else:
         form = UserRegisterForm()
         context = {
             'form': form,
         }
-        return render(request, 'core/login.html', context)
-
-    return render(request, 'core/register.html')
+        return render(request, 'core/register.html', context)
 
 
 def logout_view(request):
     logout(request)
+    messages.success(request, 'Has cerrado sesión correctamente.')  # Mensaje de éxito
     return redirect(reverse("core:home"))
 
 

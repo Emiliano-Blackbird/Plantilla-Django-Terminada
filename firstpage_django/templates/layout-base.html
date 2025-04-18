@@ -6,13 +6,22 @@
     <title>{% block head_title %}Título base{% endblock %}</title>
 </head>
 <body>
-     {% include "_includes/_header.html" %}
+    {% include "_includes/_header.html" %}
 
-     {% block page_content %}
+    <!-- Bloque para mostrar mensajes del sistema -->
+    {% if messages %}
+    <section class="messages" style="background: #e1f5fe; padding: 1em; border: 1px solid #81d4fa;">
+        <ul>
+            {% for message in messages %}
+            <li style="color: #0277bd;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
 
-     {% endblock %}
+    {% block page_content %}
+    {% endblock %}
 
     {% include "_includes/_footer.html" %}
-     
 </body>
 </html>
