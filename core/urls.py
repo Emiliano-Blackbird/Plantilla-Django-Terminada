@@ -8,7 +8,7 @@ app_name = 'core'  # Nombre del namespace de la app blog
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),  # Vista de la página de inicio
-    path("home2", HomeView2.as_view(), name="home2"),  # Vista de la página de inicio 2
+    path("home2", HomeView2.as_view(), name="home2"),  # Vista página de inicio 2
     path("sobre-nosotros/", about_us, name="about_us"),
     path("registro/", register, name="register"),
     path("login/", login_view, name="login"),

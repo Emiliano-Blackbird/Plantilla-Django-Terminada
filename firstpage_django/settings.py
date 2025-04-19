@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "thumbnails",  # Para las miniaturas de las imágenes
     "debug_toolbar",  # Debug toolbar
     "ckeditor",  # Para el editor de texto enriquecido
+    "rosetta",  # Para la traducción de la app
 
     'blog',  # Al final agrego las apps que yo he creado
     "core",

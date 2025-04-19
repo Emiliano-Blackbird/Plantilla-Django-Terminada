@@ -4,4 +4,5 @@ django-ckeditor==6.7.2
 django-extensions==3.2.3
 pillow==11.1.0
 django-thumbnails==0.8.0
+django-rosetta==0.10.2
 # Apps instaladas en la plantilla

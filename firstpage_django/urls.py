@@ -15,17 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include  # Importo include para incluir las urls de las apps
+from django.urls import path, include, re_path
 from debug_toolbar.toolbar import debug_toolbar_urls  # Debug toolbar
 
-
 from django.conf import settings
-from django.conf.urls.static import static  # Para poder servir los archivos estáticos en desarrollo
-
+from django.conf.urls.static import static
+from core.views import SetLanguageView
 
 urlpatterns = [
-    path("", include("core.urls", namespace="core")),  # Incluyo las urls de app
+    re_path(r'^rosetta/', include('rosetta.urls')),
+    path('set-language/', SetLanguageView.as_view(), name='set_language'),
+    path("", include("core.urls", namespace="core")),
     path("blog/", include("blog.urls", namespace="blog")),
     path("cursos/", include("courses.urls", namespace="courses")),
     path('admin/', admin.site.urls),
-] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Debug toolbar + static guardado
+] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

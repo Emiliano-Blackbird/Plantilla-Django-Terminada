@@ -2,6 +2,10 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages  # Mensajes de información
+from django.utils.translation import gettext as _
+from django.views.generic import View
+from django.http import HttpResponseRedirect
+from django.utils import translation
 
 from courses.models import Course
 from blog.models import Post
@@ -32,7 +36,7 @@ class HomeView(TemplateView):  # Vista basada en clase (CCBV)
         context['courses'] = Course.objects.filter(show_home=True)
         context['posts'] = Post.objects.filter(show_home=True)
 
-        messages.info(self.request, "Mensaje de información")  # Mensaje info
+        messages.info(self.request, _("Mensaje de información"))  # Mensaje info
         return context
 
 
@@ -59,7 +63,7 @@ def login_view(request):
                 context = {
                     'form': form,
                     'error': True,
-                    'error_message': 'Usuario no valido',
+                    'error_message': _('Usuario no valido'),
                 }
                 return render(request, 'core/login.html', context)
         else:
@@ -94,7 +98,7 @@ def register(request):
             user.save()
 
             # Mensaje de éxito
-            messages.success(request, '¡Usuario creado correctamente! Ya puedes iniciar sesión.')
+            messages.success(request, _('¡Usuario creado correctamente! Ya puedes iniciar sesión.'))
 
             return redirect('core:login')  # Redirigimos a la página de login
 
@@ -115,7 +119,7 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'Has cerrado sesión correctamente.')  # Mensaje de éxito
+    messages.success(request, _('Has cerrado sesión correctamente.'))  # Mensaje de éxito
     return redirect(reverse("core:home"))
 
 
@@ -161,3 +165,14 @@ def contact(request):
         "form": formulario,
     }
     return render(request, "core/contact.html", context)
+
+
+class SetLanguageView(View):
+    def post(self, request, *args, **kwargs):
+        language = request.POST.get('languaje', None)
+
+        if language:
+            translation.activate(language)
+
+        next_url = request.POST.get('next', '/')
+        return HttpResponseRedirect(next_url)

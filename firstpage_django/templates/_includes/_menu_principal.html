@@ -1,3 +1,6 @@
+{% load i18n %}
+
+<h5>{% trans 'Menú principal' %}</h5>
 <ul>
     <li><a href="{% url 'core:home' %}">Inicio</a></li>
     <li><a href="{% url 'core:about_us' %}">Sobre nosotros</a></li>
@@ -9,6 +12,16 @@
       <li><a href="{% url 'core:logout' %}">Cerrar sesión</a></li>
     {% endif %}
 </ul>
+
+<form action="{% url 'set_language' %}" method="post">
+  {% csrf_token %}
+  <select name="language">
+    <option value="en" {% if LANGUAGE_CODE == 'EN' %}selected{% endif %}>English</option>
+    <option value="es" {% if LANGUAGE_CODE == 'ES' %}selected{% endif %}>Español</option>
+  <select>
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <button type="submit">Cambiar idioma</button>
+</form>
 
 <section class="user">
     {% if request.user.is_authenticated %}  <!--si el usuario esta logueado lo muestra-->
