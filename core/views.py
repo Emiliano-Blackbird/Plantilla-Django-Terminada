@@ -169,7 +169,8 @@ def contact(request):
 
 class SetLanguageView(View):
     def post(self, request, *args, **kwargs):
-        language = request.POST.get('languaje', None)
+        language = request.POST.get('language', None)
+        request.session[translation.LANGUAGE_SESSION_KEY] = language
 
         if language:
             translation.activate(language)

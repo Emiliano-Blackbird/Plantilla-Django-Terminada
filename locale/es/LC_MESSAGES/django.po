@@ -8,24 +8,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 11:55+0200\n"
-"PO-Revision-Date: 2025-04-20 11:54+0200\n"
-"Last-Translator:   <emilianoperezpaponi@gmail.com>\n"
+"POT-Creation-Date: 2025-04-20 10:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Translated-Using: django-rosetta 0.10.2\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
 
 #: core/views.py:39
 msgid "Mensaje de información"
-msgstr "Information message"
+msgstr ""
 
 #: core/views.py:66
 msgid "Usuario no valido"
-msgstr "Invalid user"
+msgstr ""
 
 #: core/views.py:101
 msgid "¡Usuario creado correctamente! Ya puedes iniciar sesión."
@@ -1316,36 +1316,4 @@ msgstr ""
 
 #: firstpage_django/templates/_includes/_menu_principal.html:3
 msgid "Menú principal"
-msgstr "Principal menu"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:5
-msgid "Inicio"
-msgstr "Home page"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:6
-msgid "Sobre nosotros"
-msgstr "About us"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:7
-msgid "Cursos"
-msgstr "Courses"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:8
-msgid "Blog"
-msgstr "Blog"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:9
-msgid "Registro"
-msgstr "Register"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:10
-msgid "Contacto"
-msgstr "Contact"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:12
-msgid "Cerrar sesión"
-msgstr "Log out"
-
-#: firstpage_django/templates/_includes/_menu_principal.html:27
-msgid "Cambiar idioma"
-msgstr "Change language"
+msgstr ""

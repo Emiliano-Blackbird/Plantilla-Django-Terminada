@@ -1,26 +1,30 @@
-{% load i18n %}
+{% load i18n %}  <!--Agregar en cada página a traducir-->
 
 <h5>{% trans 'Menú principal' %}</h5>
 <ul>
-    <li><a href="{% url 'core:home' %}">Inicio</a></li>
-    <li><a href="{% url 'core:about_us' %}">Sobre nosotros</a></li>
-    <li><a href="{% url 'courses:course_list' %}">Cursos</a></li>
-    <li><a href="{% url 'blog:blog_list' %}">Blog</a></li>
-    <li><a href="{% url 'core:register' %}">Registro</a></li>
-    <li><a href="{% url 'core:contact' %}">Contacto</a></li>
+    <li><a href="{% url 'core:home' %}">{% trans 'Inicio' %}</a></li>
+    <li><a href="{% url 'core:about_us' %}">{% trans 'Sobre nosotros' %}</a></li>
+    <li><a href="{% url 'courses:course_list' %}">{% trans 'Cursos' %}</a></li>
+    <li><a href="{% url 'blog:blog_list' %}">{% trans 'Blog' %}</a></li>
+    <li><a href="{% url 'core:register' %}">{% trans 'Registro' %}</a></li>
+    <li><a href="{% url 'core:contact' %}">{% trans 'Contacto' %}</a></li>
     {% if request.user.is_authenticated %}
-      <li><a href="{% url 'core:logout' %}">Cerrar sesión</a></li>
+      <li><a href="{% url 'core:logout' %}">{% trans 'Cerrar sesión' %}</a></li>
     {% endif %}
 </ul>
 
-<form action="{% url 'set_language' %}" method="post">
+<form method="post" action="{% url 'set_language' %}">
   {% csrf_token %}
   <select name="language">
-    <option value="en" {% if LANGUAGE_CODE == 'EN' %}selected{% endif %}>English</option>
-    <option value="es" {% if LANGUAGE_CODE == 'ES' %}selected{% endif %}>Español</option>
-  <select>
+    {% get_current_language as LANGUAGE_CODE %}
+    {% for lang_code, lang_name in LANGUAGES %}
+      <option value="{{ lang_code }}"{% if lang_code == LANGUAGE_CODE %} selected{% endif %}>
+        {{ lang_name }} ({{ lang_code }})
+      </option>
+    {% endfor %}
+  </select>
   <input type="hidden" name="next" value="{{ request.path }}">
-  <button type="submit">Cambiar idioma</button>
+  <input type="submit" value="{% trans 'Cambiar idioma' %}">
 </form>
 
 <section class="user">
