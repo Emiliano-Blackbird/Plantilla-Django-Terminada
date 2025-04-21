@@ -1,5 +1,67 @@
-Esta es una plantilla de Django lista para utilizar, para añadir posts de forma fácil para el cliente en muy pocos pasos desde el admin. (Posee una estructura muy básica pero escalable y mejorable.
+🌐 Proyecto de plantilla en Django
 
-![Captura de pantalla (31)](https://github.com/user-attachments/assets/f27836db-501a-4875-8357-d2e5d4afe8f7)
+Proyecto desarrollado con Django, pensado como una plataforma web modular y escalable, con soporte multilenguaje, autenticación de usuarios y estructura responsive.
 
-![Captura de pantalla (34)](https://github.com/user-attachments/assets/e9dc82b7-5f5a-474e-a0e1-83da27f7a2bb)
+![Captura de pantalla (35)](https://github.com/user-attachments/assets/290da5fb-02af-4baa-8ff6-6e4b99236cdf)
+
+Características Principales
+🌍 Internacionalización (i18n)
+
+    Soporte multilenguaje dinámico.
+
+    Selector de idioma persistente vía session.
+
+    Integración con rosetta para gestión de traducciones.
+
+🔒 Autenticación
+
+    Registro, login y logout de usuarios con User de Django.
+
+    Redirección y control de vistas según autenticación.
+
+![Captura de pantalla 2025-04-21 121131](https://github.com/user-attachments/assets/323a329e-694f-4dac-96b2-07460feb99c4)
+
+![Captura de pantalla 2025-04-21 121144](https://github.com/user-attachments/assets/5b6830b7-acb0-4c49-9144-c84c05518fe8)
+
+
+
+🧩 Modularidad
+
+    Apps independientes: core, blog, courses.
+
+    Namespaces para cada módulo (core:, blog:, courses:).
+
+![Captura de pantalla 2025-04-21 121359](https://github.com/user-attachments/assets/fa36894c-2cbc-410f-8f0e-4fa453b1653e)
+
+
+🖥️ Responsive Design
+
+    Plantillas adaptadas a móvil y escritorio.
+
+    Uso de media queries y unidades relativas.
+
+♿ Accesibilidad Básica
+
+    Imágenes con etiquetas alt.
+
+    HTML5 semántico (<header>, <section>, etc.).
+
+    Contraste legible y navegación clara.
+
+🧪 Desarrollo y Debug
+
+    Integración con django-debug-toolbar.
+
+    Organización de rutas con i18n_patterns.
+
+    Tecnología | Descripción
+Django | Framework principal del proyecto
+HTML5/CSS3 | Estructura visual responsive
+Rosetta | Traducción de archivos .po de forma visual
+Django Debug Toolbar | Herramientas de desarrollo y performance
+ORM de Django | Consultas a base de datos sin SQL crudo
+Template Tags | Uso de {% url %}, {% trans %}, {% block %}
+
+🧩 Estructura del Proyecto
+![Captura de pantalla 2025-04-21 122038](https://github.com/user-attachments/assets/f943bdcb-2754-4149-a7c5-20132ebc16af)
+
