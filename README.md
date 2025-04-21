@@ -56,12 +56,9 @@ Características Principales
 
 🛠 Tecnologías y Librerías
 
-Django 	Framework principal del proyecto
-HTML5/CSS3	Estructura visual responsive
-Rosetta	Traducción de archivos .po de forma visual
-Django Debug Toolbar	Herramientas de desarrollo y performance
-ORM de Django	Consultas a base de datos sin SQL crudo
-Template Tags	Uso de {% url %}, {% trans %}, {% block %}
+Django - Framework principal del proyecto, HTML5, Rosetta para Traducción de archivos .po de forma visual,
+Django Debug Toolbar Herramientas de desarrollo y performance, ORM de Django para consultas a base de datos sin SQL crudo,
+template Tags uso de {% url %}, {% trans %}, {% block %}.
 
 🧩 Estructura del Proyecto
 
