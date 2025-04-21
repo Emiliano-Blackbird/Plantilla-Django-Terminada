@@ -1,4 +1,3 @@
-# Create your views here.
 from django.shortcuts import render
 from django.views.generic.list import ListView
 
@@ -17,7 +16,7 @@ def blog_list(request):
 class BlogListView(ListView):  # Vista basada en clase (CCBV)
     model = Post
     template_name = 'blog/blog_list_ccbv.html'  # Nombre del template
-    context_object_name = 'posts'  # Nombre del contexto que se pasa al template
+    context_object_name = 'posts'
 
 
 def blog_detail(request, id):

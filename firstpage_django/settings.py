@@ -140,11 +140,12 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# directorio donde se guardarán los archivos estáticos collectstatic
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles"  # directorio donde se guardarán los archivos estáticos recogidos por collectstatic
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -155,9 +156,9 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-
+# Donde se guardan los archivos subidos por el usuario
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Donde se guardan los archivos subidos por el usuario
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 THUMBNAILS = {
     'METADATA': {

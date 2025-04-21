@@ -1,4 +1,3 @@
-# Create your views here.
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages  # Mensajes de información
@@ -36,7 +35,7 @@ class HomeView(TemplateView):  # Vista basada en clase (CCBV)
         context['courses'] = Course.objects.filter(show_home=True)
         context['posts'] = Post.objects.filter(show_home=True)
 
-        messages.info(self.request, _("Mensaje de información"))  # Mensaje info
+        messages.info(self.request, _("Mensaje de información"))  # Msj info
         return context
 
 
@@ -119,7 +118,7 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, _('Has cerrado sesión correctamente.'))  # Mensaje de éxito
+    messages.success(request, _('Has cerrado sesión correctamente.'))
     return redirect(reverse("core:home"))
 
 
