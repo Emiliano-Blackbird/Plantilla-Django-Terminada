@@ -54,14 +54,20 @@ Características Principales
 
     Organización de rutas con i18n_patterns.
 
-    Tecnología | Descripción
-Django | Framework principal del proyecto
-HTML5/CSS3 | Estructura visual responsive
-Rosetta | Traducción de archivos .po de forma visual
-Django Debug Toolbar | Herramientas de desarrollo y performance
-ORM de Django | Consultas a base de datos sin SQL crudo
-Template Tags | Uso de {% url %}, {% trans %}, {% block %}
+🛠 Tecnologías y Librerías
+
+Django 	Framework principal del proyecto
+HTML5/CSS3	Estructura visual responsive
+Rosetta	Traducción de archivos .po de forma visual
+Django Debug Toolbar	Herramientas de desarrollo y performance
+ORM de Django	Consultas a base de datos sin SQL crudo
+Template Tags	Uso de {% url %}, {% trans %}, {% block %}
 
 🧩 Estructura del Proyecto
+
 ![Captura de pantalla 2025-04-21 122038](https://github.com/user-attachments/assets/f943bdcb-2754-4149-a7c5-20132ebc16af)
+
+📝 Como trabajé en estre proyecto según los diferentes cambios que he añadido
+
+![Captura de pantalla 2025-04-21 125109](https://github.com/user-attachments/assets/771fb7a8-69ce-48d9-adb1-7ceba4c7f019)
 
