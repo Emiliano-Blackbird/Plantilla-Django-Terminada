@@ -71,3 +71,8 @@ template Tags uso de {% url %}, {% trans %}, {% block %}.
 
 ![Captura de pantalla 2025-04-21 125109](https://github.com/user-attachments/assets/771fb7a8-69ce-48d9-adb1-7ceba4c7f019)
 
+## 👨‍💻 Author
+
+ - Emiliano Blackbird (Emiliano Perez Paponi)
+ - Full Stack Developer
+ - GitHub: @Emiliano-Blackbird
