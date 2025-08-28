@@ -73,6 +73,7 @@ template Tags uso de {% url %}, {% trans %}, {% block %}.
 
 ## 👨‍💻 Author
 
- - Emiliano Blackbird (Emiliano Perez Paponi)
- - Full Stack Developer
- - GitHub: @Emiliano-Blackbird
+    Emiliano Perez Paponi
+    Full Stack Developer
+    GitHub: @Emiliano-Blackbird
+    Mail: EmilianoPerezPaponi@gmail.com
